@@ -2,7 +2,7 @@ test:
 	@py.test -v --tb=no
 
 in-tree-test: .package/pyosys/libyosys.so .package/pyosys/__init__.py
-	@export PYTHONPATH="./.package/:${PYTHONPATH}" && export YOSYS_HOME=$(realpath ../..) && py.test  -v --tb=no
+	@PYTHONPATH="./.package/:${PYTHONPATH}" py.test  -v --tb=no
 
 .package/pyosys: ../../libyosys.so ../../misc/__init__.py
 	@mkdir -p .package/pyosys/
