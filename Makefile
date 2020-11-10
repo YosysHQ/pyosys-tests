@@ -1,8 +1,8 @@
 test:
-	@py.test -v --tb=no
+	@PYTHONPATH=".:${PYTHONPATH}" py.test -v --tb=no
 
 in-tree-test: .package/pyosys/libyosys.so .package/pyosys/__init__.py
-	@PYTHONPATH="./.package/:${PYTHONPATH}" py.test  -v --tb=no
+	@PYTHONPATH=".:./.package/:${PYTHONPATH}" IN_TREE_TEST="YES" py.test  -v --tb=no
 
 .package/pyosys: ../../libyosys.so ../../misc/__init__.py
 	@mkdir -p .package/pyosys/
