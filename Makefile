@@ -13,4 +13,9 @@ in-tree-test: .package/pyosys/libyosys.so .package/pyosys/__init__.py
 .package/pyosys/__init__.py: .package/pyosys
 	@cp ../../misc/__init__.py .package/pyosys/__init__.py
 
-.PHONY : test in-tree-test
+clean:
+	@find . -type d -name  "__pycache__" -exec rm -rf {} +
+	@rm -rf .package
+	@rm -rf .pytest_cache
+
+.PHONY : test in-tree-test clean
